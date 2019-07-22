@@ -9,7 +9,7 @@ let package = Package(
         .library(
             name: "Discourse",
             targets: ["Discourse"]
-        )
+        ),
     ],
     dependencies: [],
     targets: [
@@ -20,6 +20,6 @@ let package = Package(
         .testTarget(
             name: "DiscourseTests",
             dependencies: ["Discourse"]
-        )
+        ),
     ]
 )

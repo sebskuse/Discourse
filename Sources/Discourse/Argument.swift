@@ -24,9 +24,7 @@ public protocol Argument {
     /// Typically these incluse a shorthand
     /// version of `name`.
     var aliases: [String]? { get }
-}
 
-public extension Argument {
     /// Updates the argument's value.
     /// - Parameter argumentPairs: The full list of argument pairs.
     ///   Will throw if the value is not found.

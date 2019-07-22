@@ -36,3 +36,17 @@ public protocol Argument {
 public extension Argument {
     var aliases: [String]? { return nil }
 }
+
+public extension Argument {
+    var usageDescription: String {
+        let required = self.required ? "(Required)" : "(Optional)"
+        var arguments: [String] = [name]
+        if let aliases = aliases {
+            arguments.append(contentsOf: aliases)
+        }
+
+        let names = arguments.map { $0.commandLineRepresentation }.joined(separator: ", ")
+
+        return "\(names)\t\t\(required) \(usage)"
+    }
+}

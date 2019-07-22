@@ -15,8 +15,7 @@ public protocol Command {
     /// A description of what the command does.
     var description: String { get }
 
-    /// Runs the given command with the user supplied arguments,
-    /// and the command settings, if any.
+    /// Runs the given command, using the specified outputStream for output.
     ///
     /// - Parameters:
     ///   - outputStream: The output stream to write to for any output.

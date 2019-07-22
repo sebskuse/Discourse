@@ -10,7 +10,7 @@ import Foundation
 public struct ArgumentUpdate<T: ArgumentStringConvertible> {
     public let name: String
     public let value: T
-    
+
     public init(name: String, value: T) {
         self.name = name
         self.value = value
@@ -18,7 +18,6 @@ public struct ArgumentUpdate<T: ArgumentStringConvertible> {
 }
 
 public extension Argument {
-    
     /// Produces an `ArgumentUpdate`, representing a potential update to
     /// and `Argument`s value based on new values coming from `pairs`.
     /// - Parameter pairs: A dictionary of new arguments
@@ -33,7 +32,7 @@ public extension Argument {
             let value = pairs[firstValidAlias] {
             return ArgumentUpdate(name: firstValidAlias, value: try T.parse(argumentString: value))
         }
-        
-        throw ArgumentValueUpdateError.argumentNotFound
+
+        throw ArgumentValueUpdateError.argumentNotFound(name)
     }
 }

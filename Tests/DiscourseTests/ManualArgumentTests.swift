@@ -5,23 +5,20 @@
 //  Created by Seb Skuse on 22/07/2019.
 //
 
-import XCTest
 @testable import Discourse
+import XCTest
 
-class ManualArgumentTests: XCTestCase {
+class ManualArgumentTests: OutputStreamTestCase {
     var command: TestManualCommand!
-    var stream: MockTextOutputStream!
-    
+
     override func setUp() {
         super.setUp()
         command = TestManualCommand()
-        stream = MockTextOutputStream()
     }
 
     override func tearDown() {
         super.tearDown()
         command = nil
-        stream = nil
     }
 
     func testAManualCommandCanBeParsed() throws {
@@ -33,26 +30,32 @@ class ManualArgumentTests: XCTestCase {
 }
 
 class TestManualCommand: Command {
-    var verb: String = "test-manual"
-    
-    var description: String = "Test manual command"
-    
-    let argument = TestArgument()
-    
+    let verb: String = "test-manual"
+
+    let description: String = "Test manual command"
+
+    let argument = TestArgument(name: "testArg")
+
     func run(outputStream: inout TextOutputStream) throws {
         outputStream.write("Test argument is: \(argument.value ?? "")")
     }
 }
 
 class TestArgument: Argument {
-    let name: String = "testArg"
+    let name: String
     let usage: String = "Test usage description"
     let required: Bool = true
-    
+    let aliases: [String]?
+
     private(set) var value: String?
-    
-    func updateValue(from argumentPairs: inout [String : String]) throws {
+
+    func updateValue(from argumentPairs: inout [String: String]) throws {
         let update: ArgumentUpdate<String> = try argumentValue(from: argumentPairs)
         value = update.value
+    }
+
+    init(name: String, aliases: [String]? = nil) {
+        self.name = name
+        self.aliases = aliases
     }
 }

@@ -8,9 +8,8 @@
 import Foundation
 
 class MockTextOutputStream: TextOutputStream {
-    
     private(set) var receivedWriteMessages: [String] = []
-    
+
     func write(_ string: String) {
         receivedWriteMessages.append(string)
     }

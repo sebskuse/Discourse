@@ -8,24 +8,23 @@
 import Foundation
 
 public protocol Argument {
-    
     /// The usage description for this argument.
     var usage: String { get }
-    
+
     /// Whether this argument is required for the `Command`
     /// to be invoked.
     var required: Bool { get }
-    
+
     /// The primary name (or key) for the argument.
     /// Typically arguments are passed in the
     /// form `command --name value`.
     var name: String { get }
-    
+
     /// Other aliases for this argument.
     /// Typically these incluse a shorthand
     /// version of `name`.
     var aliases: [String]? { get }
-    
+
     /// Updates the argument's value.
     /// - Parameter argumentPairs: The full list of argument pairs.
     ///   Will throw if the value is not found.

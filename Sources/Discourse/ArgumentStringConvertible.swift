@@ -9,7 +9,6 @@ import Foundation
 
 /// A type that can be converted to from a command line argument.
 public protocol ArgumentStringConvertible {
-    
     /// Parses the given argument value string to `Self`.
     static func parse(argumentString: String) throws -> Self
 }

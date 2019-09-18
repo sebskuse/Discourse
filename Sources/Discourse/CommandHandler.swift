@@ -40,7 +40,7 @@ public class CommandHandler {
 
     /// Attempts to run a registered command for the specified `verb` and `arguments`.
     public func run(verb: String?, arguments: [String]?, outputStream: inout TextOutputStream) throws {
-        guard let arguments = arguments?.dropFirst(),
+        guard let arguments = arguments?,
             let command = commands.first(where: { $0.verb == verb }) else {
             throw HandlerError.unknownCommand(verb, usage())
         }

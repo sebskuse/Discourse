@@ -22,7 +22,7 @@ class ManualArgumentTests: OutputStreamTestCase {
     }
 
     func testAManualCommandCanBeParsed() throws {
-        try command.populateArguments(from: ["testArg", "NotTesting"])
+        try command.populateArguments(from: ["testArg", "Testing"])
         var passedStream: TextOutputStream = stream
         try command.run(outputStream: &passedStream)
         XCTAssertEqual(stream.receivedWriteMessages.first, "Test argument is: Testing")

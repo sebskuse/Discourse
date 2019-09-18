@@ -35,7 +35,7 @@ public class CommandHandler {
 
     public func run() throws {
         var standardOutput: TextOutputStream = StandardOutput()
-        try run(verb: CommandLine.verb, arguments: CommandLine.arguments, outputStream: &standardOutput)
+        try run(verb: CommandLine.verb, arguments: CommandLine.commandArguments, outputStream: &standardOutput)
     }
 
     /// Attempts to run a registered command for the specified `verb` and `arguments`.

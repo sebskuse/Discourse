@@ -38,7 +38,7 @@ enum ArgumentValueUpdateError: LocalizedError {
 
         private var underlyingValue: T?
 
-        init(name: String, aliases: [String]? = nil, defaultValue: T? = nil, usage: String) {
+        public init(name: String, aliases: [String]? = nil, defaultValue: T? = nil, usage: String) {
             self.name = name
             self.aliases = aliases
             self.usage = usage
@@ -63,7 +63,7 @@ enum ArgumentValueUpdateError: LocalizedError {
 
         public var wrappedValue: T?
 
-        init(name: String, aliases: [String]? = nil, defaultValue: T? = nil, usage: String) {
+        public init(name: String, aliases: [String]? = nil, defaultValue: T? = nil, usage: String) {
             self.name = name
             self.aliases = aliases
             self.usage = usage

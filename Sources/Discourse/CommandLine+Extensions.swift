@@ -11,12 +11,16 @@ extension CommandLine {
     private static var allArguments: ArraySlice<String> {
         return arguments[CommandLine.arguments.indices]
     }
+    
+    private static var usableArguments: ArraySlice<String> {
+        return allArguments.dropFirst()
+    }
 
     static var verb: String? {
-        return allArguments.dropFirst().first
+        return usableArguments.first
     }
 
     static var commandArguments: [String] {
-        return Array(allArguments[1...])
+        return Array(usableArguments[1...])
     }
 }

@@ -21,6 +21,6 @@ extension CommandLine {
     }
 
     static var commandArguments: [String] {
-        return Array(usableArguments[1...])
+        return Array(usableArguments.dropFirst())
     }
 }

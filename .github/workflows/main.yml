@@ -1,0 +1,15 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Select Xcode Version
+      run: sudo xcode-select -switch /Applications/Xcode_11.app
+    - name: Run tests
+      run: swift test

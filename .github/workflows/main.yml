@@ -1,0 +1,13 @@
+name: Test
+
+on: [push]
+
+jobs:
+  test:
+    name: Test
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run tests
+      run: swift test

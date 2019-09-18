@@ -35,12 +35,12 @@ public class CommandHandler {
 
     public func run() throws {
         var standardOutput: TextOutputStream = StandardOutput()
-        try run(verb: CommandLine.verb, arguments: CommandLine.arguments, outputStream: &standardOutput)
+        try run(verb: CommandLine.verb, arguments: CommandLine.commandArguments, outputStream: &standardOutput)
     }
 
     /// Attempts to run a registered command for the specified `verb` and `arguments`.
     public func run(verb: String?, arguments: [String]?, outputStream: inout TextOutputStream) throws {
-        guard let arguments = arguments?.dropFirst(),
+        guard let arguments = arguments,
             let command = commands.first(where: { $0.verb == verb }) else {
             throw HandlerError.unknownCommand(verb, usage())
         }

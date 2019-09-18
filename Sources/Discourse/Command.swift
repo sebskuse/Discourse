@@ -33,7 +33,7 @@ public extension Command {
     func populateArguments(from passedArguments: [String]) throws {
         var argumentPairs: [String: String] = [:]
         stride(from: 0, to: passedArguments.count - 1, by: 2).forEach {
-            argumentPairs[passedArguments[$0]] = passedArguments[$0 + 1].escapedCommandLineString
+            argumentPairs[passedArguments[$0].escapedCommandLineString] = passedArguments[$0 + 1].escapedCommandLineString
         }
 
         try arguments.forEach { commandArg in
